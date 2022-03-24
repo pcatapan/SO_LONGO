@@ -6,7 +6,7 @@
 /*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 19:59:37 by pcatapan          #+#    #+#             */
-/*   Updated: 2022/03/20 17:29:52 by pcatapan         ###   ########.fr       */
+/*   Updated: 2022/03/24 09:25:06 by pcatapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_checker(int argc, char **argv, t_map *map)
 	i = 0;
 	if (argc < 2)
 	{
-		ft_printf("\x1b[31m%s\n", "Invalid number of arguments!");
+		ft_printf("\x1b[31m%s\n", "ERROR : Invalid number of arguments!");
 		return (0);
 	}
 	while (argv[1][i] != '.')
@@ -34,7 +34,7 @@ int	ft_checker(int argc, char **argv, t_map *map)
 	if (!(argv[1][i + 1] == 'b' && argv[1][i + 2] == 'e'
 			&& argv[1][i + 3] == 'r'))
 	{
-		ft_printf("\x1b[31m%s\n", "Invalid exstension map!");
+		ft_printf("\x1b[31m%s\n", "ERROR : Invalid exstension map!");
 		return (0);
 	}
 	if (ft_checker_map(argv[1], map, map->object) == 0)
@@ -47,17 +47,14 @@ int	ft_checker(int argc, char **argv, t_map *map)
 int	main(int argc, char **argv)
 {
 	t_map	map;
-	int		i;
-	int		j;
 
 	map.h = 0;
-	i = 0;
 	map.object = malloc(sizeof(t_control_obj));
 	if (ft_checker(argc, argv, &map) == 0)
 		return (0);
 	ft_creating_map(&map);
-	ft_move(&map);
-	mlx_loop(map.mlx_ptr);
-	exit (0);
+	// ft_move(&map);
+	// mlx_loop(map.mlx_ptr);
+	// exit (0);
 	return (0);
 }
